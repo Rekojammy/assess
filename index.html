@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <title>Fetch starting point</title>
+</head>
+
+<body>
+    <div class="container mt-5 bg-light w-75 p-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="login.html" method="POST" role="form" class="form-group w-100" id="form">
+                    <h4>Billing Address</h4>
+                    <div class="row mt-5">
+                        <div class="col-lg-6 mb-3">
+                            <label for="fname" class="mb-2">First Name</label>
+                            <input type="text" name="fname" id="fname" class="form-control" placeholder="e.g. Victor">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label for="lname" class="mb-2">Last Name</label>
+                            <input type="text" name="lname" id="lname" class="form-control" placeholder="e.g. Victor">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-lg-6 mb-3">
+                            <label for="uname" class="mb-2">Username</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">@</span>
+                                <input type="text" name="uname" id="uname" class="form-control" placeholder="Username">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label for="pword" class="mb-2">Password</label>
+                            <input type="password" name="pword" id="pword" class="form-control"
+                                placeholder="6 characters minimum">
+                        </div>
+                    </div>
+
+
+                    <div class="my-3">
+                        <label for="email" class="mb-2">Email <span class="text-muted">(Optional)</span></label>
+                        <input type="text" name="email" id="email" class="form-control" placeholder="you@example.com">
+                    </div>
+
+                    <div class="my-3">
+                        <label for="add" class="mb-2">Address</label>
+                        <input type="text" name="add" id="add" class="form-control" placeholder="1234 Main St">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary col-lg-12 align-content-center fs-5 mb-5 mt-2">Sign
+                        Up</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <h2>My Information</h2>
+            <div id="output">
+                <table class="table" id="table">
+                    <thead>
+                        <!-- <tr>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Adddress</th>
+                            <th scope="col">Password</th>
+                        </tr> -->
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- <tr>
+                            <td scope="row">Rejoice</td>
+                            <td>Uchechukwu</td>
+                            <td>Rekojammy</td>
+                            <td>rejoice@gmail.com</td>
+                            <td>Cinfores Okujagu Street, PH</td>
+                            <td>123321</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+
+            $('#form').on('submit', function (e) {
+                e.preventDefault();
+                if ($('#fname').val() == '' || $('#lname').val() == '' || $('#uname').val() == '' || $('#pword').val() == '') {
+                    alert('Please fill in all fields');
+                } else {
+                var fname = $('#fname').val();
+                var lname = $('#lname').val();
+                var uname = $('#uname').val();
+                var pword = $('#pword').val();
+                var email = $('#email').val();
+                var add = $('#add').val();
+                $('#tbody').append(
+                    '<tr><td>' + fname + '</td><td>' + lname + '</td><td>' + uname + '</td><td>' + email +
+                    '</td><td>' + add + '</td><td>' + pword + '</td></tr>');
+                $('input').val('');
+                }
+            });
+        });
+    </script>
+    <!-- <script src="main.js"></script> -->
+</body>
+
+</html>
